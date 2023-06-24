@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Container, Row, Col, Card, Button, Modal} from "react-bootstrap";
-import ProjectsList from "../components/ProjectsList";
-import ProjectItem from "../components/ProjectItem";
 import { sendDownload, sendID } from "../http/userAPI";
 
 const Projects = () => {
@@ -9,10 +7,6 @@ const Projects = () => {
     const [author1, setAuthor1] = useState("ind1gozzz")
     const [name2, setName2] = useState("diplom")
     const [author2, setAuthor2] = useState("ind1gozzz")
-
-    //const [curName, setCurName] = useState("")
-    //const [curAuthor, setCurAuthor] = useState("")
-    //const [curID, setCurID] = useState()
 
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false)
@@ -28,8 +22,6 @@ const Projects = () => {
     const getID = async (author, name) => {
         const response = await fetch(`https://api.github.com/repos/${author}/${name}`);
         const data = await response.json();
-        //console.log(data.id)
-        //await setCurID(data.id)
         return data.id;
     }
 
@@ -48,17 +40,10 @@ const Projects = () => {
           }
     }
 
-    //console.log(getProjByID(636973456))
-    //getID(author1, name1)
-
     const click = async (curAuthor, curName) => {
-        //getID(curAuthor, curName).then(res => setCurID(res))
         let curID = await getID(curAuthor, curName)
         let projInfo = await getProjByID(curID)
-        //console.log(curID)
         console.log(projInfo)
-        //const response = await sendID(curID)
-        //console.log(response)
         await setProjID(projInfo.id)
         await setOwnerID(projInfo.owner.id)
         await setForksNum(projInfo.forks)
@@ -67,14 +52,10 @@ const Projects = () => {
         await setProjName(curName)
         console.log(`log: ${curAuthor}, ${curName}`)
         const response = await sendDownload(curName, curAuthor)
-        
-        //console.log(ownerID)
         handleShow()
     }
 
     const downloadClick = async (curAuthor, curName) => { 
-        // const response = await sendDownload(curName, curAuthor)
-        // console.log(response)
         console.log(`log: ${curAuthor}, ${curName}`)
         sendDownload(curName, curAuthor)
     }
@@ -82,8 +63,6 @@ const Projects = () => {
     return (
         <Container>
             <h1 className="d-flex justify-content-center align-items-center">Загруженные репозитории</h1>
-            {/* <Row> */}
-                {/* <ProjectsList /> */}
             <Row className="d-flex mt-4">
         <Col md={3} className="d-flex justify-content-center align-items-center" >
             <Card style={{width:300}} className="mt-3 d-flex justify-content-center align-items-center">
@@ -91,7 +70,6 @@ const Projects = () => {
                     <div className="mb-1">Название {name1}</div>
                     <div className="mb-1">Автор {author1} </div>
                     <div>
-                    {/* <Button className="mb-2" onClick={() => {setCurName(name1); setCurAuthor(author1); click()}}>Загрузить</Button> */}
                     <Button className="mb-2" onClick={() => {click(author1, name1)}}>Загрузить</Button>
                 </div>
                 </div>
@@ -103,7 +81,6 @@ const Projects = () => {
                     <div className="mb-1">Название {name2}</div>
                     <div className="mb-1">Автор {author2} </div>
                     <div>
-                    {/* <Button className="mb-2" onClick={() => {setCurName(name1); setCurAuthor(author1); click()}}>Загрузить</Button> */}
                     <Button className="mb-2" onClick={() => {click(author2, name2)}}>Загрузить</Button>
                 </div>
                 </div>
@@ -111,7 +88,6 @@ const Projects = () => {
        </Col>
        </Row>
             
-            {/* </Row> */}
         <>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -127,7 +103,7 @@ const Projects = () => {
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>Закрыть</Button>
-                <Button variant="primary" onClick={downloadClick}>Загрузить</Button>
+                {/* <Button variant="primary" onClick={downloadClick}>Загрузить</Button> */}
                 </Modal.Footer>
             </Modal>
         </>

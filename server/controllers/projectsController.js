@@ -2,7 +2,6 @@ class ProjectsController {
     async download(req, res) { 
         const {data} = req.query
         const fs = require("fs")
-        //console.log(data)
         try {
             const path = `.\\repositories\\${data}.zip`
             if (fs.existsSync(path)) {
@@ -15,8 +14,5 @@ class ProjectsController {
         }
     }
 }
-
-
-
 
 module.exports = new ProjectsController()

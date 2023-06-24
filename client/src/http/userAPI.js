@@ -15,10 +15,7 @@ export const sendInpLink = async (link) => {
 //Pages
 
 export const sendDownload = async (name, author) => {
-    //const response = await $host.post("app/projects/download", {name, author})
-    //const response = await fetch(`http://localhost:5000/app/projects/download?author=${author}?name=${name}`)
     const response = await fetch(`http://localhost:5000/app/projects/download?data=${author}-${name}`)
-
     const blob = await response.blob()
     const downloadURL = window.URL.createObjectURL(blob)
     const link = document.createElement("a")

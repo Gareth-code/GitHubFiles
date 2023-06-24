@@ -1,6 +1,5 @@
 class SearchController { 
     async search(req, resp) { 
-            //res.json({message:"succes"})
             const {name} = req.body
             const {author} = req.body
 
@@ -31,8 +30,6 @@ class SearchController {
     }
     
     async checkLink(req, resp) { 
-        // res.json({message: "succes"})
-        // const {name} = req.body
         const {link} = req.body
         let someString = link.split("/")
 
@@ -59,8 +56,5 @@ class SearchController {
             });
     }
 }
-
-
-
 
 module.exports = new SearchController()
