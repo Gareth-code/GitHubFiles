@@ -5,8 +5,8 @@ import { sendDownload, sendID } from "../http/userAPI";
 const Projects = () => {
     const [name1, setName1] = useState("GitHubFiles")
     const [author1, setAuthor1] = useState("Gareth-code")
-    const [name2, setName2] = useState("diplom")
-    const [author2, setAuthor2] = useState("ind1gozzz")
+    const [name2, setName2] = useState("Test")
+    const [author2, setAuthor2] = useState("Gareth-code")
 
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false)
