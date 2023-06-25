@@ -3,8 +3,8 @@ import { Container, Row, Col, Card, Button, Modal} from "react-bootstrap";
 import { sendDownload, sendID } from "../http/userAPI";
 
 const Projects = () => {
-    const [name1, setName1] = useState("popusk")
-    const [author1, setAuthor1] = useState("ind1gozzz")
+    const [name1, setName1] = useState("GitHubFiles")
+    const [author1, setAuthor1] = useState("Gareth-code")
     const [name2, setName2] = useState("diplom")
     const [author2, setAuthor2] = useState("ind1gozzz")
 
